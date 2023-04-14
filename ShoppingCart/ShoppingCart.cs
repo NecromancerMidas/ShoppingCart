@@ -25,15 +25,20 @@ namespace ShoppingCart
                 Console.WriteLine($@"Handlevogn er tom.");
                 return;
             }
-            var total = 0;
             Console.WriteLine("Handlevogn:");
             foreach (var product in _products)
             {
                 var productTotal = product.Price * product.Count;
                 Console.WriteLine($@"   {product.Count} stk av {product.Name} kr {product.Price} = {product.Total()}");
-                total += productTotal;
             }
-            Console.WriteLine($@"Total pris er {total}");
+            Console.WriteLine($@"Total pris er {Total()}");
+        }
+
+        public int Total()
+        {
+            var total = 0;
+            _products.ForEach(p => total += p.Total());
+            return total;
         }
     }
 }
