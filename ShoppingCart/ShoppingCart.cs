@@ -30,12 +30,10 @@ namespace ShoppingCart
             foreach (var product in _products)
             {
                 var productTotal = product.Price * product.Count;
-                Console.WriteLine($@"   {product.Count} stk av {product.Name} kr {product.Price} = {productTotal}");
+                Console.WriteLine($@"   {product.Count} stk av {product.Name} kr {product.Price} = {product.Total()}");
                 total += productTotal;
             }
-
             Console.WriteLine($@"Total pris er {total}");
-
         }
     }
 }

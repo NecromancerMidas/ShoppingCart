@@ -21,5 +21,10 @@ namespace ShoppingCart
         {
             Count += count;
         }
+
+        public int Total()
+        {
+            return Price * Count;
+        }
     }
 }
