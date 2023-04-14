@@ -26,10 +26,7 @@ namespace ShoppingCart
                 return;
             }
             Console.WriteLine("Handlevogn:");
-            foreach (var product in _products)
-            {
-                Console.WriteLine($@"   {product.Count} stk av {product.Name} kr {product.Price} = {product.Total()}");
-            }
+            _products.ForEach(p => Console.WriteLine($@"   {p.Count} stk av {p.Name} kr {p.Price} = {p.Total()}"));
             Console.WriteLine($@"Total pris er {Total()}");
         }
         public int Total()
