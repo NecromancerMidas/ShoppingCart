@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Schema;
 
 namespace ShoppingCart
-{
+{ 
     internal class ShoppingCart
     {
         private List<Product> _products = new ();
@@ -28,12 +28,10 @@ namespace ShoppingCart
             Console.WriteLine("Handlevogn:");
             foreach (var product in _products)
             {
-                var productTotal = product.Price * product.Count;
                 Console.WriteLine($@"   {product.Count} stk av {product.Name} kr {product.Price} = {product.Total()}");
             }
             Console.WriteLine($@"Total pris er {Total()}");
         }
-
         public int Total()
         {
             var total = 0;
