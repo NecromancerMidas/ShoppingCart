@@ -10,21 +10,14 @@ namespace ShoppingCart
     {
         public string Name {get; }
         public int Price { get;}
-        public int Count { get; private set; }
 
         public Product(string name, int price)
         {
             Name = name;
             Price = price;
         }
-        public void AddCount(int count)
-        {
-            Count += count;
-        }
+ 
 
-        public int Total()
-        {
-            return Price * Count;
-        }
+        
     }
 }

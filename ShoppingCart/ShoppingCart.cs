@@ -10,30 +10,31 @@ namespace ShoppingCart
 { 
     internal class ShoppingCart
     {
-        private List<Product> _products = new ();
+        private List<OrderLine> _orders = new ();
 
-        public void Buy(Product item, int count)
+        public void Buy(OrderLine order, int count)
         {
-            if (_products.All(p => p.Name != item.Name)) _products.Add(item);
-            _products.First(p => p.Name == item.Name).AddCount(count);
-            Console.WriteLine(@$"Du kjøpte {count}stk av {item.Name}");
+            if (_orders.All(o => o.Product.Name != order.Product.Name)) _orders.Add(order);
+            _orders.First(o => o.Product.Name == order.Product.Name).AddCount(count);
+            Console.WriteLine(@$"Du kjøpte {count}stk av {order.Product.Name}");
         }
         public void Show()
         {
-            if (_products.Count == 0)
+            if (_orders.Count == 0)
             {
                 Console.WriteLine($@"Handlevogn er tom.");
                 return;
             }
             Console.WriteLine("Handlevogn:");
-            _products.ForEach(p => Console.WriteLine($@"   {p.Count} stk av {p.Name} kr {p.Price} = {p.Total()}"));
+            foreach (var order in _orders)
+            {
+                Console.WriteLine($@"   {order.Count} stk av {order.Product.Name} kr {order.Product.Price} = {order.Total()}");
+            }
             Console.WriteLine($@"Total pris er {Total()}");
         }
         public int Total()
         {
-            var total = 0;
-            _products.ForEach(p => total += p.Total());
-            return total;
+            return _orders.Sum(o => o.Total());
         }
     }
 }

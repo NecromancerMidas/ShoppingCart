@@ -15,11 +15,14 @@ namespace ShoppingCart
             var productA = new Product("A", 40);
             var productB = new Product("B", 70);
             var productC = new Product("C", 30);
-            shoppingCart.Buy(productA, 1);
+            var orderlineA = new OrderLine(productA);
+            var orderlineB = new OrderLine(productB);
+            var orderlineC = new OrderLine(productC);
+            shoppingCart.Buy(orderlineA, 1);
             shoppingCart.Show();
-            shoppingCart.Buy(productB, 3);
+            shoppingCart.Buy(orderlineB, 3);
             shoppingCart.Show();
-            shoppingCart.Buy(productA, 5);
+            shoppingCart.Buy(orderlineA, 5);
             shoppingCart.Show();
         }
     }
