@@ -24,5 +24,10 @@ namespace ShoppingCart
         {
             Count += count;
         }
+
+        public void Show()
+        { 
+            Console.WriteLine($@"   {Count} stk av {Product.Name} kr {Product.Price} = {Total()}");
+        }
     }
 }
