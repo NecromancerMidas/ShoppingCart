@@ -12,11 +12,11 @@ namespace ShoppingCart
     {
         private List<OrderLine> _orders = new ();
 
-        public void Buy(OrderLine order, int count)
+        public void Buy(Product item, int count)
         {
-            if (_orders.All(o => o.Product.Name != order.Product.Name)) _orders.Add(order);
-            _orders.First(o => o.Product.Name == order.Product.Name).AddCount(count);
-            Console.WriteLine(@$"Du kjøpte {count}stk av {order.Product.Name}");
+            if (_orders.All(o => o.Product.Name != item.Name)) _orders.Add(new OrderLine(item));
+            _orders.First(o => o.Product.Name == item.Name).AddCount(count);
+            Console.WriteLine(@$"Du kjøpte {count}stk av {item.Name}");
         }
         public void Show()
         {
